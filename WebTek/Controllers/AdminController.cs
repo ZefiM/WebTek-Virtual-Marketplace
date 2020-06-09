@@ -24,6 +24,7 @@ namespace WebTek.Controllers
 
         public ViewResult Index()
         {
+			//Returns only products that are posted by the current user. This is only a account user display, not product display.
             return View(repo.Products
             .Where(p => p.Seller == _userManager.GetUserName(HttpContext.User)));
             

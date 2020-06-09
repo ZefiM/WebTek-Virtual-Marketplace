@@ -63,6 +63,8 @@ namespace WebTek.Controllers
                     if ((await signInManager.PasswordSignInAsync(user,
                      loginModel.Password, false, false)).Succeeded)
                     {
+							//This sets the current logged in users name in Viewbags so it can be
+							//displayed in the pages
                             TempData["UserID"] = userManager.GetUserName(HttpContext.User);
                             ViewBag.UsrID = userManager.GetUserName(HttpContext.User);
                             ViewBag.UserID = userManager.GetUserName(HttpContext.User);
@@ -74,7 +76,10 @@ namespace WebTek.Controllers
                     }
                 }
             }
+			//User input not valid
             ModelState.AddModelError("", "Invalid name or password");
+			//This sets the current logged in users name in Viewbags so it can be
+			//displayed in the pages
             TempData["UserID"] = "Null";
             ViewBag.UsrID = "Null";
             ViewBag.UserID = "Null";
