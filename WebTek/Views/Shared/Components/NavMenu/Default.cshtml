@@ -1,0 +1,110 @@
+﻿<style type="text/css">
+
+    #nav{ 
+        width: 375px;
+        margin: auto;
+    }
+    #nav ul{
+        padding: 0;
+        list-style: none;
+    }
+    #nav ul li{
+        float: left;
+        text-align: center;
+        width: 120px;
+        margin: 1px;
+    }
+    #nav ul li a{
+        color: #fff;
+        text-decoration: none;
+        font-family: Calibri;
+        background: #0a0;
+        display: block;
+        padding: 10px;
+    }
+    #nav ul li a:hover{
+        background: #0e0;
+        color: #000;
+    }
+    #navbar ul li ul{
+        display: none;
+    }
+    #navbar ul li:hover ul{
+        display: block;
+        position: absolute;
+        z-index:1000;
+    }
+
+
+</style>
+
+<body>
+    <form id="form1" runat="server">
+        <div id="nav">
+            <ul class="NavList">
+                @if (ViewBag.UsrID == "Null" || (ViewBag.UsrID == null))
+                {
+                    <li class="List">
+                        <a href="/Home/Index">Home</a>
+                    </li>
+                    <li class="List">
+                        @model IEnumerable<string>
+                        <a asp-action="List"
+                           asp-controller="Product"
+                           asp-route-category=""
+                           asp-route-page="1">
+                            Items for Sale
+                        </a>
+                    </li>
+                    <li class="List">
+                        <a href="/Home/About">About</a>
+                        <ul class="DropNavList">
+                            <li class="List2">
+
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="List">
+                    </li>
+                    <li class="List">
+                        <a href="/Product/Add">Sell item</a>
+                    </li>
+                    <li class="List">
+                    </li>
+
+                }
+                else
+                {
+                    <li class="List">
+                        <a href="/Home/Index">Home</a>
+                    </li>
+                    <li class="List">
+                        <a asp-action="List"
+                           asp-controller="Product"
+                           asp-route-category=""
+                           asp-route-page="1">
+                            Items for Sale
+                        </a>
+                    </li>
+                    <li class="List">
+                        <a href="/Home/About">About</a>
+                        <ul class="DropNavList">
+                            <li class="List2">
+
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="List">
+                        <a href="/Order/List">Your Orders</a>
+                    </li>
+                    <li class="List">
+                        <a href="/Product/Add">Sell item</a>
+                    </li>
+                    <li class="List">
+                        <a href="/Product/Index">Your Items</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </form>
+</body>

@@ -1,0 +1,78 @@
+﻿
+<style type="text/css">
+
+    .input-validation-error {
+        border-color: red;
+        background-color: #fee;
+    }
+
+    #header {
+        text-align: center;
+        background-color: lightskyblue;
+    }
+
+    #navbar {
+        background-color: lightskyblue;
+        text-align: center;
+    }
+
+    #maincontent {
+        height: auto;
+        background-color: lightblue;
+        text-align: center;
+    }
+
+    #footer {
+        background-color: silver;
+        border: 2px solid white;
+        text-align: center;
+    }
+
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" asp-href-include="lib/bootstrap/dist/css/*.min.css" />
+    <link rel="stylesheet" asp-href-include="lib/font-awesome/css/*.css" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="WholePage" class="container-fluid">
+            <div id="header" class="row">
+                <div class="col-md-12">
+                    <a class="text-white" href="#" style="text-decoration: none;"><h2>WebTek</h2></a>
+                    @if (ViewBag.UserID == "Null" || (ViewBag.UserID == null))
+                    {
+                        <a class="btn btn-sm btn-primary float-right" href="/Account/Create">Register</a>
+                        <a class="btn btn-sm btn-primary float-right" href="/Account/Login">Login</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-sm btn-primary float-right" href="/Account/Logout">Log Out</a>
+                        <a class="btn float-right" asp-controller="Account" asp-action="Index" >Hello @ViewBag.User</a>
+                    }
+                </div>
+            </div>
+            <div id="navbar" class="row">
+                <div class="col-md-12">
+                    @await Component.InvokeAsync("NavMenu")
+                    @if (ViewBag.Title != "Cart")
+                    {
+                        <div class="float-right">
+                            @await Component.InvokeAsync("CartSummary")
+                        </div>
+                    }
+                </div>
+            </div>
+            <div id="maincontent" class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">@RenderBody()</div>
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

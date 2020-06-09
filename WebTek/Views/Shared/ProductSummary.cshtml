@@ -1,0 +1,32 @@
+﻿@model Product
+<div class="card m-3 rounded">
+    <div class="card-block m-2">
+        <div class="card-body">
+            <h3 class="card-title">
+                <strong>@Model.Name</strong>
+            </h3>
+            <p class="card-text lead">
+                @Model.Description
+            </p>
+            <span class="float-left bg-success text-white rounded m-2 p-1">
+                @Model.Price.ToString("c")
+            </span>
+            <span class="float-left rounded m-2 p-1">
+                Quantity:@Model.Quantity.ToString("")
+            </span>
+            <span class="align-self-center">
+                Seller: @Model.Seller
+            </span>
+            <form id="@Model.ProductID" asp-action="AddToCart"
+                  asp-controller="Cart" method="post" class="float-right m-2 p-1">
+                <input type="hidden" asp-for="ProductID" />
+                <input type="hidden" name="returnUrl"
+                       value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                <button type="submit" class="btn btn-info btn-sm float-right">
+                    Add To Cart
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+

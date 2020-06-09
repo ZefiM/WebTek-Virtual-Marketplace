@@ -1,0 +1,32 @@
+﻿@model Product
+@{
+    ViewBag.Title = "Sell A Item";
+    Layout = "_HomeLayoutLoginCreate";
+}
+<h2>Sell Item</h2>
+<div asp-validation-summary="All" class="text-danger"></div>
+<form asp-action="Add" method="post">
+    <h3>Item Information</h3>
+    <div class="form-group">
+        <label>Product Name:</label><input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Description:</label><input asp-for="Description" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Quantity:</label><input asp-for="Quantity" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Price:</label><input asp-for="Price" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Condition:</label><input asp-for="Condition" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Category:</label><input asp-for="Category" class="form-control" />
+    </div>
+
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="Publish Item" />
+    </div>
+</form>
